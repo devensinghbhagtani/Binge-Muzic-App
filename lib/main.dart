@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:songz/Pages/playsongpage.dart';
 import 'package:songz/Pages/song_page.dart';
 // import 'package:songz/Pages/splashscreen.dart';
@@ -13,11 +14,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       showSemanticsDebugger: false,
       title: 'Muzic Player',
       theme: darkTheme,
-      home: const PlaySong(),
+      home: const SongPage(),
     );
   }
 }

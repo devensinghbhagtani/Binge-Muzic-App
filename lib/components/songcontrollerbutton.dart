@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:songz/config/colors.dart';
+import 'package:songz/controller/songplayercontroller.dart';
 
 class SongControllerButtons extends StatelessWidget {
   const SongControllerButtons({super.key});
 
   @override
   Widget build(BuildContext context) {
+    SongPlayerController songPlayerController = Get.put(SongPlayerController());
+
     return Column(
       children: [
         Row(
@@ -40,10 +44,28 @@ class SongControllerButtons extends StatelessWidget {
             const SizedBox(
               width: 40,
             ),
-            const Icon(
-              Icons.play_circle,
-              color: primColor,
-              size: 70,
+            Obx(
+              () => songPlayerController.isPlaying.value
+                  ? InkWell(
+                      onTap: () {
+                        songPlayerController.resumePlaying();
+                      },
+                      child: const Icon(
+                        Icons.play_circle,
+                        color: primColor,
+                        size: 70,
+                      ),
+                    )
+                  : InkWell(
+                      onTap: () {
+                        songPlayerController.pausePlaying();
+                      },
+                      child: const Icon(
+                        Icons.pause_circle,
+                        color: primColor,
+                        size: 70,
+                      ),
+                    ),
             ),
             const SizedBox(
               width: 40,
