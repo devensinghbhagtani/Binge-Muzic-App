@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:songz/config/colors.dart';
 
 class SongDetails extends StatelessWidget {
-  const SongDetails({super.key});
+  final String songTitle;
+  final String artistName;
+  const SongDetails(
+      {super.key, required this.songTitle, required this.artistName});
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +29,11 @@ class SongDetails extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              "Love you Zindagi",
-              style: Theme.of(context).textTheme.bodyLarge,
+            Flexible(
+              child: Text(
+                "$songTitle",
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
             ),
             const Row(
               children: [
@@ -53,7 +58,7 @@ class SongDetails extends StatelessWidget {
         Row(
           children: [
             Text(
-              "Jubin Nautiyal",
+              "$artistName",
               style: Theme.of(context).textTheme.bodySmall,
             ),
           ],

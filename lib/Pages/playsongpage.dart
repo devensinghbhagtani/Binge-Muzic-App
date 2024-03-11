@@ -9,34 +9,38 @@ import 'package:songz/config/colors.dart';
 import 'package:songz/controller/songplayercontroller.dart';
 
 class PlaySong extends StatelessWidget {
-  const PlaySong({super.key});
-
+  const PlaySong(
+      {super.key, required this.songTitle, required this.artistName});
+  final String songTitle;
+  final String artistName;
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
-            PlaySongHeaderButton(),
-            SizedBox(
+            const PlaySongHeaderButton(),
+            const SizedBox(
               height: 20,
             ),
-            SongAndVolume(),
-            SizedBox(
+            const SongAndVolume(),
+            const SizedBox(
               height: 30,
             ),
-            SongDetails(),
-            SizedBox(
+            SongDetails(
+              artistName: artistName,
+              songTitle: songTitle,
+            ),
+            const SizedBox(
               height: 30,
             ),
-            SongWave(),
-            Spacer(),
-            SongControllerButtons(),
+            const Spacer(),
+            const SongControllerButtons(),
           ],
         ),
       ),

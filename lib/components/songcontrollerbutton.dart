@@ -12,16 +12,30 @@ class SongControllerButtons extends StatelessWidget {
 
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text("02.34"),
-            const Text("/"),
-            Text(
-              "02.34",
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ],
+        Obx(
+          () => Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "${songPlayerController.currentTime}",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              Expanded(
+                child: Slider(
+                  value: songPlayerController.sliderValue.value,
+                  onChanged: (value) {
+                    songPlayerController.sliderValue.value = value;
+                  },
+                  min: 0,
+                  max: songPlayerController.sliderMaxValue.value,
+                ),
+              ),
+              Text(
+                "${songPlayerController.totalTime}",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ],
+          ),
         ),
         const SizedBox(
           height: 10,
