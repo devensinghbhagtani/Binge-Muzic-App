@@ -76,11 +76,9 @@ class SongPage extends StatelessWidget {
                           .map((e) => SongTile(
                               songName: e.title,
                               onpress: () {
-                                songPlayerController.playLocalAudio(e.data);
-                                Get.to(PlaySong(
-                                  songTitle: e.title,
-                                  artistName: e.artist!,
-                                ));
+                                songPlayerController.playLocalAudio(e);
+                                songDataController.findCurrentIndex(e.id);
+                                Get.to(PlaySong());
                               }))
                           .toList())
                   : const Column(

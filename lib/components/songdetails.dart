@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:songz/config/colors.dart';
+import 'package:songz/controller/songplayercontroller.dart';
 
 class SongDetails extends StatelessWidget {
-  final String songTitle;
-  final String artistName;
-  const SongDetails(
-      {super.key, required this.songTitle, required this.artistName});
+  const SongDetails({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    SongPlayerController songPlayerController = Get.put(SongPlayerController());
     return Column(
       children: [
         Row(
@@ -30,11 +32,12 @@ class SongDetails extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Flexible(
-              child: Text(
-                "$songTitle",
+                child: Obx(
+              () => Text(
+                songPlayerController.songTitle.value,
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-            ),
+            )),
             const Row(
               children: [
                 Icon(
@@ -55,14 +58,16 @@ class SongDetails extends StatelessWidget {
         const SizedBox(
           height: 5,
         ),
-        Row(
-          children: [
-            Text(
-              "$artistName",
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ],
-        ),
+        Obx(
+          () => Row(
+            children: [
+              Text(
+                songPlayerController.songArtist.value,
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+            ],
+          ),
+        )
       ],
     );
   }
