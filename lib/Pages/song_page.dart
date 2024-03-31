@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:on_audio_query/on_audio_query.dart';
 import 'package:songz/Pages/playsongpage.dart';
 import 'package:songz/components/songheader.dart';
 import 'package:songz/components/songtile.dart';
 import 'package:songz/components/trendingsongslider.dart';
 import 'package:songz/config/colors.dart';
+import 'package:songz/controller/cloudsongcontroller.dart';
 import 'package:songz/controller/songdatacontroller.dart';
 import 'package:songz/controller/songplayercontroller.dart';
 
@@ -14,6 +16,7 @@ class SongPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SongDataController songDataController = Get.put(SongDataController());
+    CloudSongController cloudSongController = Get.put(CloudSongController());
     SongPlayerController songPlayerController = Get.put(SongPlayerController());
     return Scaffold(
         body: SafeArea(
@@ -70,20 +73,31 @@ class SongPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Obx(() => songDataController.isDeviceSong.value
-                  ? Column(
-                      children: songDataController.localSongList.value
-                          .map((e) => SongTile(
-                              songName: e.title,
-                              onpress: () {
-                                songPlayerController.playLocalAudio(e);
-                                songDataController.findCurrentIndex(e.id);
-                                Get.to(PlaySong());
-                              }))
-                          .toList())
-                  : const Column(
-                      children: [],
-                    ))
+              Obx(
+                () => songDataController.isDeviceSong.value
+                    ? Column(
+                        children: songDataController.localSongList.value
+                            .map((e) => SongTile(
+                                songName: e.title,
+                                onpress: () {
+                                  songPlayerController.playLocalAudio(e);
+                                  songDataController.findCurrentIndex(e.id);
+                                  Get.to(const PlaySong());
+                                }))
+                            .toList())
+                    : Column(
+                        children: cloudSongController.cloudSongList.value
+                            .map((e) => SongTile(
+                                songName: e.title!,
+                                onpress: () {
+                                  songPlayerController.playCloudAudio(e);
+                                  print(e.id);
+                                  songDataController.findCurrentIndex(e.id!);
+                                  Get.to(const PlaySong());
+                                }))
+                            .toList(),
+                      ),
+              )
             ],
           ),
         ),

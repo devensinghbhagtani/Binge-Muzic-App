@@ -19,7 +19,7 @@ class SongPageHeader extends StatelessWidget {
           width: 10,
         ),
         const Text(
-          "Binge Muzic",
+          "Music Melody",
           style: TextStyle(
             fontSize: 25,
           ),

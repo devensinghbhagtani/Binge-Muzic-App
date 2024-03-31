@@ -55,18 +55,32 @@ class _SongAndVolumeState extends State<SongAndVolume> {
             ],
             annotations: [
               GaugeAnnotation(
-                  horizontalAlignment: GaugeAlignment.center,
-                  widget: Container(
-                    width: 210,
-                    height: 210,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(1000),
-                      image: const DecorationImage(
-                        image: AssetImage("assets/images/dear_zindagi.jpg"),
-                        fit: BoxFit.cover,
+                horizontalAlignment: GaugeAlignment.center,
+                widget: songPlayerController.isCloudSongPlaying.value
+                    ? Container(
+                        width: 210,
+                        height: 210,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(1000),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                songPlayerController.albumUrl.value),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    : Container(
+                        width: 270,
+                        height: 270,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(1000),
+                          image: const DecorationImage(
+                            image: AssetImage("assets/images/dear_zindagi.jpg"),
+                            fit: BoxFit.cover,
+                          ),
+                        ),
                       ),
-                    ),
-                  ))
+              )
             ],
           )
         ],

@@ -39,9 +39,13 @@ dependencies:
   carousel_slider: ^4.2.1
   syncfusion_flutter_gauges: ^23.2.7
   on_audio_query: ^2.9.0
-  permission_handler: ^11.3.0
+  permission_handler: ^11.3.1
   get: ^4.6.6
   just_audio: ^0.9.36
+  firebase_core: ^2.27.0
+  cloud_firestore: ^4.15.8
+  flutter_blue_plus: ^1.32.0
+  flutter_blue: ^0.8.0
   
 dev_dependencies:
   flutter_test:
@@ -53,8 +57,6 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  firebase_core: ^2.20.0
-  cloud_firestore: ^4.12.1
   marquee: ^2.2.3
 
 # For information on the generic Dart part of this file, see the

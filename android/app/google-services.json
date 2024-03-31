@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "76788598536",
+    "project_id": "binge-muzic",
+    "storage_bucket": "binge-muzic.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:76788598536:android:7c787959954afe0a714ebd",
+        "android_client_info": {
+          "package_name": "com.example.songz"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAr1LkAq7UrEfJ65jMkoXxJf1g8CuTbE1U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
